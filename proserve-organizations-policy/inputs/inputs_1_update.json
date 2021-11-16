@@ -1,0 +1,15 @@
+{
+    "PolicyName": "SamTestPolicy",
+    "PolicyType": "SERVICE_CONTROL_POLICY",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Action": "*",
+                "Resource": "*"
+            }
+        ]
+    },
+    "Description": "this is a test...update"
+}

@@ -1,0 +1,105 @@
+{
+    "typeName": "ProServe::Organizations::Policy",
+    "description": "Policies in AWS Organizations",
+    "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+    "definitions": {},
+    "properties": {
+        "PolicyName": {
+            "description": "Name of the Policy",
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 64
+        },
+        "PolicyType": {
+            "description": "The type of policy to create. You can specify one of the following values: AISERVICES_OPT_OUT_POLICY, BACKUP_POLICY, SERVICE_CONTROL_POLICY, TAG_POLICY",
+            "type": "string",
+            "default": "SERVICE_CONTROL_POLICY",
+            "enum": [
+                "SERVICE_CONTROL_POLICY",
+                "AISERVICES_OPT_OUT_POLICY",
+                "BACKUP_POLICY",
+                "TAG_POLICY"
+            ]
+        },
+        "PolicyDocument": {
+            "description": "The Policy Document",
+            "type": "object"
+        },
+        "PolicyUrl": {
+            "description": "s3 URL to the location of the Policy json file",
+            "type": "string",
+            "pattern": "^s3://[a-z0-9-]+/[a-z0-9-/]+"
+        },
+        "Description": {
+            "description": "Human readable description of the policy",
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 250
+        },
+        "PolicyId": {
+            "description": "Id of the Policy",
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 128
+        },
+        "Arn": {
+            "description": "ARN of the Policy",
+            "type": "string",
+            "pattern": "^arn:aws.*:organizations::[0-9]{12}:policy/o-[a-z0-9]{10}/(service_control|tag|backup|aiservices_opt_out)_policy/p-[a-z0-9]{8}"
+        }
+    },
+    "additionalProperties": false,
+    "oneOf": [
+        {
+            "required": [
+                "PolicyDocument"
+            ]
+        },
+        {
+            "required": [
+                "PolicyUrl"
+            ]
+        }
+    ],
+    "primaryIdentifier": [
+        "/properties/PolicyId"
+    ],
+    "readOnlyProperties": [
+        "/properties/PolicyId",
+        "/properties/Arn"
+    ],
+    "writeOnlyProperties": [
+        "/properties/PolicyUrl",
+        "/properties/PolicyDocument"
+    ],
+    "handlers": {
+        "create": {
+            "permissions": [
+                "organizations:CreatePolicy",
+                "s3:GetObject"
+            ]
+        },
+        "read": {
+            "permissions": [
+                "organizations:DescribePolicy"
+            ]
+        },
+        "update": {
+            "permissions": [
+                "organizations:UpdatePolicy",
+                "s3:GetObject"
+            ]
+        },
+        "delete": {
+            "permissions": [
+                "organizations:ListTargetsForPolicy",
+                "organizations:DeletePolicy"
+            ]
+        },
+        "list": {
+            "permissions": [
+                "organizations:ListPolicies"
+            ]
+        }
+    }
+}

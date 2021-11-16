@@ -1,0 +1,47 @@
+{
+    "typeName": "ProServe::Organizations::PolicyAttachment",
+    "description": "Attaches a policy to a defined target.",
+    "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+    "properties": {
+        "PolicyId": {
+            "description": "The unique identifier (ID) of the policy that you want to attach to the target.",
+            "type": "string",
+            "pattern": "^p-[a-zA-Z0-9_]{8,128}$"
+        },
+        "TargetId": {
+            "description": "The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots , ListOrganizationalUnitsForParent , or ListAccounts operations.",
+            "type": "string",
+            "pattern": "^([0-9]{12}|r-[a-zA-Z0-9_]{4,32}|ou-[a-zA-Z0-9_]{4,32}-[a-zA-Z0-9_]{8,32})$"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "PolicyId",
+        "TargetId"
+    ],
+    "createOnlyProperties": [
+        "/properties/PolicyId",
+        "/properties/TargetId"
+    ],
+    "primaryIdentifier": [
+        "/properties/PolicyId",
+        "/properties/TargetId"
+    ],
+    "handlers": {
+        "create": {
+            "permissions": [
+                "organizations:AttachPolicy"
+            ]
+        },
+        "read": {
+            "permissions": [
+                "organizations:ListTargetsForPolicy"
+            ]
+        },
+        "delete": {
+            "permissions": [
+                "organizations:DetachPolicy"
+            ]
+        }
+    }
+}

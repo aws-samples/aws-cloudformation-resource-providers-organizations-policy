@@ -1,0 +1,16 @@
+{
+    "PolicyName": "SamTestPolicy",
+    "PolicyType": "SERVICE_CONTROL_POLICY",
+    "PolicyId": "p-adf2345k",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Action": "*",
+                "Resource": "*"
+            }
+        ]
+    },
+    "Description": "this is a test...1 invalid"
+}

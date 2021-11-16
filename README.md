@@ -1,11 +1,11 @@
-## My Project
+# aws-cloudformation-resource-providers-organizations-policy
 
-TODO: Fill this README out!
+The CloudFormation Resource Provider Package For AWS Organizations Policies.
 
-Be sure to:
+There are two resources available:
 
-* Change the title in this README
-* Edit your repository description on GitHub
+* ProServe::Organizations::Policy
+* ProServe::Organizations::PolicyAttachment
 
 ## Security
 

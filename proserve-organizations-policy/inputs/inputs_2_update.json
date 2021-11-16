@@ -1,0 +1,6 @@
+{
+  "PolicyName": "SamTestPolicy",
+  "PolicyType": "SERVICE_CONTROL_POLICY",
+  "PolicyUrl": "s3://example-bucket/example-scp.json",
+  "Description": "this is a test...2 update"
+}
