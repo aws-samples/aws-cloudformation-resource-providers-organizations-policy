@@ -4,6 +4,12 @@ A native CloudFormation resource for AWS Organizations Policy Attachments writte
 
 ## Deployment
 
+Install The CloudFormation CLI with the python plugin:
+
+```sh
+pip install cloudformation-cli-python-plugin
+```
+
 Set your AWS credentials to the right account however you prefer and deploy the CloudFormation Resource Type:
 
 ```sh
