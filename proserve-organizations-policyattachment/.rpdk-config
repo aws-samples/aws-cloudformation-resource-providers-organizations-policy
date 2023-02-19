@@ -1,8 +1,8 @@
 {
     "artifact_type": "RESOURCE",
     "typeName": "ProServe::Organizations::PolicyAttachment",
-    "language": "python37",
-    "runtime": "python3.7",
+    "language": "python39",
+    "runtime": "python3.9",
     "entrypoint": "proserve_organizations_policyattachment.handlers.resource",
     "testEntrypoint": "proserve_organizations_policyattachment.handlers.test_entrypoint",
     "settings": {
